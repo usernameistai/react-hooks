@@ -29,9 +29,13 @@ function TodoApp() {
         <Toolbar>
           <Typography color="inherit">Todos with Hooks</Typography>
         </Toolbar>
-        <TodoForm addTodo={addTodo}/>
-        <TodoList todos={todos} />
       </AppBar>
+      <Grid container justify="center" style={{ marginTop: "1rem"}}>
+        <Grid item xs={11} md={8} lg={4}>
+          <TodoForm addTodo={addTodo}/>
+          <TodoList todos={todos} />
+        </Grid>
+      </Grid>
     </Paper>
   );
 }
