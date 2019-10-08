@@ -12,10 +12,12 @@ function TodoList({ todos, removeTodo, toggleTodo, editTodo }) {
           {todos.map((todo, i) => ( // i is index
             <> {/** JSX fragment to break up adjacent JSX elements */}
               <Todo 
-                id={todo.id}
-                task={todo.task} 
+                /*id={todo.id}
+                task={todo.task}
+                completed={todo.completed} 
+                is equivalent to below {...todo} keeping in so can keep track of things */
+                {...todo}
                 key={todo.id} 
-                completed={todo.completed}
                 removeTodo={removeTodo}
                 toggleTodo={toggleTodo}
                 editTodo={editTodo}
