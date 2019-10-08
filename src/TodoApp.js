@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import useTodoState from './hooks/useTodoState';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
@@ -9,18 +9,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 
 function TodoApp() {
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
-  /* const initialTodos = [
-    { id: 1, task: "Clean fishtank", completed: false },
-    { id: 2, task: "Wash Car", completed: true },
-    { id: 3, task: "Grow Beard", completed: false }
-  ]; */
+  const initialTodos = [{ id: 1, task: "Pet a monkey", completed: false }]; 
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(initialTodos);
-  // using destructuring to extract all the things needed
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]); // square brackets shows when useEffect will run
-
+  
   return (
     <Paper style={{ // paper gives a background
       padding: 0,
@@ -50,6 +41,9 @@ function TodoApp() {
 }
 
 export default TodoApp;
+// import useLocalStorageState from './hooks/useLocalStorageState';
+// const [mood, setMood] = useLocalStorageState("mood", "happy"); 
+ /** <button onClick={() => setMood("angry") }>Click to get angry</button> */
 
 // - TodoApp
 //    - TodoForm
@@ -57,3 +51,15 @@ export default TodoApp;
 //       -TodoItem
 
 // each Todo will have an id, task, completed
+
+// const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+/* const initialTodos = [
+    { id: 1, task: "Clean fishtank", completed: false },
+    { id: 2, task: "Wash Car", completed: true },
+    { id: 3, task: "Grow Beard", completed: false }
+  ]; 
+  
+  // using destructuring to extract all the things needed
+  useEffect(() => {
+    window.localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]); // square brackets shows when useEffect will run */
