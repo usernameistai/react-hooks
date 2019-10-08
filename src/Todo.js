@@ -7,13 +7,22 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 
-function Todo({ task, completed }) { // casn put props or just grab what we want from teh props
+function Todo({ id, task, completed, removeTodo, toggleTodo }) { // can put props or just grab what we want from teh props
   return (
     <ListItem>
-      <Checkbox tabIndex={-1} checked={completed}/>
-      <ListItemText style={{textDecoration: completed ? "line-through": "none"}}>{task}</ListItemText>
+      <Checkbox 
+        tabIndex={0} 
+        checked={completed} 
+        onClick={() => toggleTodo(id)}
+      />
+      <ListItemText style={{textDecoration: completed ? "line-through": "none"}}>
+        {task}
+      </ListItemText>
       <ListItemSecondaryAction>
-        <IconButton aria-label="Delete"> {/**SVG's not not readily accessible, need aria label */}
+        <IconButton 
+          aria-label="Delete" 
+          onClick={() => removeTodo(id)}
+        >
           <DeleteIcon />
         </IconButton>
         <IconButton aria-label="Edit">
