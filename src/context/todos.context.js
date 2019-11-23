@@ -1,5 +1,6 @@
-import React, { createContext } from 'react';
-import useTodoState from '../hooks/useTodoState';
+import React, { createContext, useReducer } from 'react';
+import todoReducer from '../reducers/todo.reducer';
+
 const defaultTodos = [
   { id: 1, task: "Mow the lawn using goats", completed: false },
   { id: 2, task: "Release ladybirds into garden", completed: true }
@@ -8,12 +9,21 @@ const defaultTodos = [
 export const TodosContext = createContext();
 
 export function TodosProvider(props) {
-  // const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(defaultTodos);
-  const todosStuff = useTodoState(defaultTodos); // all todo methods are in useTodoState
+  const [todos, dispatch] = useReducer(todoReducer, defaultTodos);
   return (
-    <TodosContext.Provider value={todosStuff}>
+    <TodosContext.Provider value={{ todos, dispatch }}>
       { props.children }
     </TodosContext.Provider>
-  )
+  );
 }
 
+
+// export function TodosProvider(props) {
+//   // const { todos, addTodo, removeTodo, toggleTodo, editTodo } = useTodoState(defaultTodos);
+//   const todosStuff = useTodoState(defaultTodos); // all todo methods are in useTodoState
+//   return (
+//     <TodosContext.Provider value={todosStuff}>
+//       { props.children }
+//     </TodosContext.Provider>
+//   );
+// }

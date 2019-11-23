@@ -26,13 +26,6 @@ export default (initialTodos) => {
         );
       setTodos(updatedTodos);
     }
-    /* was return {
-      todos,
-      addTodo: addTodo,
-      removeTodo: removeTodo,
-      toggleTodo: toggleTodo,
-      editTodo: editTodo
-    } */
   };
 };
 
