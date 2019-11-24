@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import useToggleState from './hooks/useToggleState';
 import EditTodoForm from './EditTodoForm';
 import ListItem from '@material-ui/core/ListItem';
@@ -46,7 +46,9 @@ function Todo({ id, task, completed }) { // can put props or just grab what we w
     </ListItem>
   );
 }
-export default Todo;
+export default memo(Todo);
+// react memo is an performance optimisation technique, that stores state ad props and if nothing 
+// changes won't cause a rerender HOC - Higher Order Component
 
 
 /** Original
